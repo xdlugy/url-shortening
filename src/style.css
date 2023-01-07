@@ -15,9 +15,57 @@ header {
     padding: 20px;
 }
 
+header div#menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    top: 80px;
+    width: 80%;
+    height: 350px;
+    background-color:hsl(257, 27%, 26%);
+    border-radius: 10px;
+}
+
+header div#menu button#login {
+    border: none;
+    background: none;
+    color: white;
+    font-size: large;
+    font-family:Poppins;
+    font-weight: bold;
+}
+
+header div#menu button#signup {
+    border: none;
+    background: hsl(180, 66%, 49%);
+    padding: 10px;
+    width: 90%;
+    border-radius: 100px;
+    color: white;
+    font-size: large;
+    font-family:Poppins;
+    font-weight: bold;
+}
+
+header div#menu hr {
+    width: 90%;
+    border: 1px solid gray;
+}
+
 header img {
     height: 30px;
     align-self: center;
+}
+
+header ul {
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
 }
 
 header ul li {
@@ -27,12 +75,11 @@ header ul li {
 
 header ul li a {
     text-decoration: none;
-    color: gray;
     font-weight: bold;
 }
 
 header ul li a:visited {
-    color: gray;
+    color: white;
 }
 
 header span {

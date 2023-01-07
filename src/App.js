@@ -14,11 +14,16 @@ function App() {
     <main>
     <header>
       <img src={logo} alt="logo" />
-      {/*<ul>
-        <li><a href="">Features</a></li>
-        <li><a href="">Pricing</a></li>
-        <li><a href="">Resources</a></li>
-  </ul>*/}
+      <div id="menu">
+        <ul>
+          <li><a href="">Features</a></li>
+          <li><a href="">Pricing</a></li>
+          <li><a href="">Resources</a></li>
+        </ul>
+        <hr></hr>
+        <button id="login">Login</button>
+        <button id="signup">Sign Up</button>
+      </div>
       <span>
         <div></div>
         <div></div>
