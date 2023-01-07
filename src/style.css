@@ -51,7 +51,10 @@ header div#menu button#signup {
 
 header div#menu hr {
     width: 90%;
-    border: 1px solid gray;
+    border: none;
+    color: gray;
+    background-color: gray;
+    height: 1px;
 }
 
 header img {
@@ -201,7 +204,10 @@ div.previous p:nth-child(3) {
 
 div.previous hr {
     width: 100%;
-    border: 1px solid lightgray;
+    border: none;
+    color: lightgray;
+    background-color: lightgray;
+    height: 1px;
 }
 
 div.previous button.copy {
