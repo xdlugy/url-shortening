@@ -23,7 +23,7 @@ header div#menu {
     position: absolute;
     top: 80px;
     width: 80%;
-    height: 350px;
+    height: 360px;
     background-color:hsl(257, 27%, 26%);
     border-radius: 10px;
 }
@@ -60,7 +60,7 @@ header img {
 }
 
 header ul {
-    height: 160px;
+    height: 140px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -71,6 +71,7 @@ header ul {
 header ul li {
     list-style: none;
     float: left;
+    padding: 15px;
 }
 
 header ul li a {
