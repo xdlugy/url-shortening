@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
 
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -12,10 +17,10 @@ header {
     display: flex;
     width: 80%;
     margin: auto;
-    padding: 20px;
+    padding: 25px;
 }
 
-header div#menu {
+header div.menu {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -28,7 +33,11 @@ header div#menu {
     border-radius: 10px;
 }
 
-header div#menu button#login {
+.hidden {
+    display: none;
+}
+
+header div.menu button#login {
     border: none;
     background: none;
     color: white;
@@ -37,7 +46,7 @@ header div#menu button#login {
     font-weight: bold;
 }
 
-header div#menu button#signup {
+header div.menu button#signup {
     border: none;
     background: hsl(180, 66%, 49%);
     padding: 10px;
@@ -49,7 +58,7 @@ header div#menu button#signup {
     font-weight: bold;
 }
 
-header div#menu hr {
+header div.menu hr {
     width: 90%;
     border: none;
     color: gray;
@@ -63,7 +72,8 @@ header img {
 }
 
 header ul {
-    height: 140px;
+    height: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -73,8 +83,7 @@ header ul {
 
 header ul li {
     list-style: none;
-    float: left;
-    padding: 15px;
+    width: 100%;
 }
 
 header ul li a {
@@ -94,7 +103,10 @@ header span {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
 
+header span:hover {
+    cursor: pointer;
 }
 
 header span div {
@@ -148,7 +160,7 @@ div#gray {
 div#shortendiv {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     width: 90%;
     margin: auto;
@@ -160,17 +172,28 @@ div#shortendiv {
     transform: translate(0, -50%);
 }
 
+div#shortendiv  {
+    width: 90%;
+}
+
 div#shortendiv input {
     width: 75%;
     height: 25px;
-    outline: none;
     border: none;
     border-radius: 5px;
     font-family: Poppins;
     padding: 8px;
 }
 
-div#shortendiv button#shortentrigger {
+div#shortendiv input:focus {
+    outline: none;
+}
+
+input:not(:focus):invalid {
+    outline: 3px solid hsl(0, 87%, 67%);
+}
+
+div#shortendiv  button#shortentrigger {
     height: 40px;
     width: 80%;
     border: none;
@@ -180,6 +203,28 @@ div#shortendiv button#shortentrigger {
     font-size: large;
     color: white;
     background-color: hsl(180, 66%, 49%);
+}
+
+div#shortendiv  p.shown {
+    width: 80%;
+    visibility: visible;
+    color: hsl(0, 87%, 67%);
+    font-size: 15px;
+    font-style:italic;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+p.vhidden {
+    width: 80%;
+    visibility: hidden;
+    color: hsl(0, 87%, 67%);
+    font-size: 15px;
+    font-style:italic;
+    margin: 0;
+    padding: 0;
+    text-align: left;
 }
 
 div.previous {

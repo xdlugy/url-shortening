@@ -1,4 +1,5 @@
 import './style.css';
+import {useState} from 'react';
 import logo from './images/logo.svg';
 import top from './images/illustration-working.svg';
 import brand from './images/icon-brand-recognition.svg';
@@ -10,21 +11,29 @@ import pinterest from './images/icon-pinterest.svg';
 import twitter from './images/icon-twitter.svg';
 
 function App() {
+
+  const [isMenuShown, setIsMenuShown] = useState(false);
+  const [isInputValid, setInputValid] = useState(true);
+
+  function handleValidation() {
+    
+  }
+
   return (
     <main>
     <header>
       <img src={logo} alt="logo" />
-      <div id="menu">
+      <div className={isMenuShown ? "menu" : "hidden"}>
         <ul>
           <li><a href="">Features</a></li>
           <li><a href="">Pricing</a></li>
           <li><a href="">Resources</a></li>
+          <li><hr></hr></li>
+          <li><button id="login">Login</button></li>
+          <li><button id="signup">Sign Up</button></li>
         </ul>
-        <hr></hr>
-        <button id="login">Login</button>
-        <button id="signup">Sign Up</button>
       </div>
-      <span>
+      <span onClick={() => setIsMenuShown(!isMenuShown)}>
         <div></div>
         <div></div>
         <div></div>
@@ -37,8 +46,9 @@ function App() {
   <button className="getstarted">Get Started</button>
   <div id="gray">
     <div id="shortendiv">
-      <input type="text" placeholder="Shorten a link here..."></input>
-      <button id="shortentrigger">Shorten it!</button>
+      <input type="url" placeholder="Shorten a link here..." name="input"></input>
+      <p className={isInputValid ? "vhidden" : "shown"}>Please add a link</p>
+      <button id="shortentrigger" onClick={handleValidation}>Shorten it!</button>
     </div>
     <div className="previous">
       <p>http://localhost:3000</p>
