@@ -1,5 +1,5 @@
 import './style.css';
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import logo from './images/logo.svg';
 import top from './images/illustration-working.svg';
 import brand from './images/icon-brand-recognition.svg';
@@ -15,7 +15,22 @@ function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isInputValid, setInputValid] = useState(true);
 
+  const urlInput = useRef(null);
+
   function handleValidation() {
+    if(urlInput.current.checkValidity()){
+      setInputValid(true);
+      addLink();
+    }
+      else
+      setInputValid(false);
+  }
+
+  function clearValidation() {
+    setInputValid(true);
+  }
+
+  function addLink() {
     
   }
 
@@ -46,7 +61,7 @@ function App() {
   <button className="getstarted">Get Started</button>
   <div id="gray">
     <div id="shortendiv">
-      <input type="url" placeholder="Shorten a link here..." name="input"></input>
+      <input type="url" placeholder="Shorten a link here..." ref={urlInput} onFocus={clearValidation} onBlur={handleValidation}></input>
       <p className={isInputValid ? "vhidden" : "shown"}>Please add a link</p>
       <button id="shortentrigger" onClick={handleValidation}>Shorten it!</button>
     </div>
