@@ -1,5 +1,7 @@
 import './style.css';
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
+import LinkList from './LinkList.js';
+import { v4 as uuidv4 } from 'uuid';
 import logo from './images/logo.svg';
 import top from './images/illustration-working.svg';
 import brand from './images/icon-brand-recognition.svg';
@@ -10,17 +12,26 @@ import instagram from './images/icon-instagram.svg';
 import pinterest from './images/icon-pinterest.svg';
 import twitter from './images/icon-twitter.svg';
 
+const LOCAL_STORAGE_KEY = "shortly.links";
+
 function App() {
 
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isInputValid, setInputValid] = useState(true);
+  const [links, setLinks] = useState([]);
 
   const urlInput = useRef(null);
+
+  useEffect(() => {
+    const storedLinks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if(storedLinks)
+      setLinks(storedLinks);
+  },[]);
 
   function handleValidation() {
     if(urlInput.current.checkValidity()){
       setInputValid(true);
-      addLink();
+      handleAddLink();
     }
       else
       setInputValid(false);
@@ -30,8 +41,13 @@ function App() {
     setInputValid(true);
   }
 
-  function addLink() {
-    
+  function handleAddLink() {
+    const link = urlInput.current.value;
+    setLinks(prevLinks => {
+      return [...prevLinks, {id: uuidv4(), oldLink: link, newLink: link}];
+    });
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(links));
+    urlInput.current.value = null;
   }
 
   return (
@@ -65,12 +81,7 @@ function App() {
       <p className={isInputValid ? "vhidden" : "shown"}>Please add a link</p>
       <button id="shortentrigger" onClick={handleValidation}>Shorten it!</button>
     </div>
-    <div className="previous">
-      <p>http://localhost:3000</p>
-      <hr></hr>
-      <p>http://localhost:3000</p>
-      <button className="copy">Copy</button>
-    </div>
+    <LinkList links={links}/>
     <h2>Advanced Statistics</h2>
     <p>Track how your links are performing across the web with our 
   advanced statistics dashboard.</p>
