@@ -245,9 +245,15 @@ div.previous {
 div.previous p:first-child {
     padding-top: 10px;
     color: black;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 div.previous p:nth-child(3) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     color: hsl(180, 66%, 49%);
 }
 

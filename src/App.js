@@ -24,16 +24,20 @@ function App() {
 
   useEffect(() => {
     const storedLinks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if(storedLinks)
+    if(Array.isArray(storedLinks) && storedLinks.length>0)
       setLinks(storedLinks);
   },[]);
 
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(links));
+  },[links]);
+
   function handleValidation() {
     if(urlInput.current.value!=""){
-    if(urlInput.current.checkValidity())
-      setInputValid(true);
-    else
-      setInputValid(false);
+      if(urlInput.current.checkValidity())
+        setInputValid(true);
+      else
+        setInputValid(false);
     }
   }
 
@@ -42,12 +46,12 @@ function App() {
   }
 
   function handleAddLink() {
-    if(setInputValid){
+    handleValidation();
     const link = urlInput.current.value;
+    if(setInputValid && link!=""){
     setLinks(prevLinks => {
       return [...prevLinks, {id: uuidv4(), oldLink: link, newLink: link}];
     });
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(links));
     urlInput.current.value = null;
     }
   }
