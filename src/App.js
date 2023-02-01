@@ -29,12 +29,12 @@ function App() {
   },[]);
 
   function handleValidation() {
-    if(urlInput.current.checkValidity()){
+    if(urlInput.current.value!=""){
+    if(urlInput.current.checkValidity())
       setInputValid(true);
-      handleAddLink();
-    }
-      else
+    else
       setInputValid(false);
+    }
   }
 
   function clearValidation() {
@@ -42,12 +42,14 @@ function App() {
   }
 
   function handleAddLink() {
+    if(setInputValid){
     const link = urlInput.current.value;
     setLinks(prevLinks => {
       return [...prevLinks, {id: uuidv4(), oldLink: link, newLink: link}];
     });
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(links));
     urlInput.current.value = null;
+    }
   }
 
   return (
@@ -77,9 +79,9 @@ function App() {
   <button className="getstarted">Get Started</button>
   <div id="gray">
     <div id="shortendiv">
-      <input type="url" placeholder="Shorten a link here..." ref={urlInput} onFocus={clearValidation} onBlur={handleValidation}></input>
+      <input type="url" placeholder="Shorten a link here..." ref={urlInput} onFocus={clearValidation} onBlur={handleValidation} className={isInputValid ? "" : "invalid"}></input>
       <p className={isInputValid ? "vhidden" : "shown"}>Please add a link</p>
-      <button id="shortentrigger" onClick={handleValidation}>Shorten it!</button>
+      <button id="shortentrigger" onClick={handleAddLink}>Shorten it!</button>
     </div>
     <LinkList links={links}/>
     <h2>Advanced Statistics</h2>

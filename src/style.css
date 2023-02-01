@@ -193,6 +193,10 @@ input:not(:focus):invalid {
     outline: 3px solid hsl(0, 87%, 67%);
 }
 
+input.invalid {
+    outline: 3px solid hsl(0, 87%, 67%);
+}
+
 div#shortendiv  button#shortentrigger {
     height: 40px;
     width: 80%;
